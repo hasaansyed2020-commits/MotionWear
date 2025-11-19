@@ -1,183 +1,7 @@
-// Data model
-const products = [
-  {
-    id: "nike-air-max-270",
-    name: "Nike Air Max 270",
-    brand: "Nike",
-    category: "Men's Running",
-    type: "running",
-    price: 180,
-    oldPrice: 210,
-    badge: "New",
-    rating: 5.0,
-    reviews: 324,
-    images: [
-      "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/999309/pexels-photo-999309.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1032110/pexels-photo-1032110.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800"
-    ],
-    colors: ["#111111", "#ffffff", "#ff2d55"],
-    sizes: [38, 39, 40, 41, 42, 43, 44],
-    tags: ["running", "air", "max"],
-  },
-  {
-    id: "adidas-ultraboost-22",
-    name: "Adidas Ultraboost 22",
-    brand: "Adidas",
-    category: "Men's Running",
-    type: "running",
-    price: 200,
-    oldPrice: 230,
-    badge: "Sale -20%",
-    rating: 5.0,
-    reviews: 198,
-    images: [
-      "https://images.pexels.com/photos/2529150/pexels-photo-2529150.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/3756042/pexels-photo-3756042.jpeg?auto=compress&cs=tinysrgb&w=800"
-    ],
-    colors: ["#4b5563", "#1f2937", "#0047ab"],
-    sizes: [39, 40, 41, 42, 43],
-    tags: ["running", "boost"],
-  },
-  {
-    id: "nb-574",
-    name: "New Balance 574",
-    brand: "New Balance",
-    category: "Men's Casual",
-    type: "casual",
-    price: 150,
-    rating: 5.0,
-    reviews: 154,
-    images: [
-      "https://images.pexels.com/photos/292998/pexels-photo-292998.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/762519/pexels-photo-762519.jpeg?auto=compress&cs=tinysrgb&w=800"
-    ],
-    colors: ["#10b981", "#4b5563", "#92400e"],
-    sizes: [38, 39, 40, 41, 42, 43],
-    tags: ["casual", "retro"],
-  },
-  {
-    id: "puma-rs-x",
-    name: "Puma RS-X",
-    brand: "Puma",
-    category: "Men's Sports",
-    type: "sports",
-    price: 160,
-    rating: 5.0,
-    reviews: 210,
-    images: [
-      "https://images.pexels.com/photos/2529147/pexels-photo-2529147.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/131558/pexels-photo-131558.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    colors: ["#ffffff", "#1d4ed8", "#22d3ee"],
-    sizes: [38, 39, 40, 41, 42, 43],
-    tags: ["sports", "chunky"],
-  },
-  {
-    id: "reebok-club-c",
-    name: "Reebok Club C",
-    brand: "Reebok",
-    category: "Men's Casual",
-    type: "casual",
-    price: 140,
-    rating: 5.0,
-    reviews: 96,
-    images: [
-      "https://images.pexels.com/photos/2529152/pexels-photo-2529152.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1032110/pexels-photo-1032110.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    colors: ["#ffffff", "#111827"],
-    sizes: [38, 39, 40, 41, 42, 43, 44],
-    tags: ["tennis", "classic"],
-  },
-  {
-    id: "nike-nightflyer-300",
-    name: "NightFlyer 300",
-    brand: "Nike",
-    category: "Men's Lifestyle",
-    type: "casual",
-    price: 280,
-    badge: "Limited",
-    rating: 5.0,
-    reviews: 412,
-    images: [
-      "https://images.pexels.com/photos/1407358/pexels-photo-1407358.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    colors: ["#020617", "#3b82f6", "#fbbf24"],
-    sizes: [40, 41, 42, 43, 44],
-    tags: ["lifestyle", "limited"],
-  },
-  {
-    id: "motion-zen-trainer",
-    name: "Zen Trainer Pro",
-    brand: "Motion",
-    category: "Men's Sports",
-    type: "sports",
-    price: 190,
-    rating: 5.0,
-    reviews: 88,
-    images: [
-      "https://images.pexels.com/photos/3756042/pexels-photo-3756042.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/2529150/pexels-photo-2529150.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    colors: ["#111827", "#16a34a", "#e5e7eb"],
-    sizes: [39, 40, 41, 42, 43],
-    tags: ["training", "gym"],
-  },
-  {
-    id: "converse-chuck-70",
-    name: "Converse Chuck 70",
-    brand: "Converse",
-    category: "Men's Casual",
-    type: "casual",
-    price: 130,
-    rating: 5.0,
-    reviews: 160,
-    images: [
-      "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/1032110/pexels-photo-1032110.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    colors: ["#111827", "#ffffff"],
-    sizes: [38, 39, 40, 41, 42, 43, 44],
-    tags: ["canvas", "street"],
-  },
-  {
-    id: "vans-old-skool",
-    name: "Vans Old Skool",
-    brand: "Vans",
-    category: "Men's Casual",
-    type: "casual",
-    price: 145,
-    rating: 5.0,
-    reviews: 132,
-    images: [
-      "https://images.pexels.com/photos/2528476/pexels-photo-2528476.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    colors: ["#111827", "#f97316"],
-    sizes: [38, 39, 40, 41, 42, 43, 44],
-    tags: ["skate", "street"],
-  },
-  {
-    id: "ua-hovr",
-    name: "UA HOVR Phantom",
-    brand: "Under Armour",
-    category: "Men's Running",
-    type: "running",
-    price: 210,
-    rating: 5.0,
-    reviews: 95,
-    images: [
-      "https://images.pexels.com/photos/1315146/pexels-photo-1315146.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "https://images.pexels.com/photos/3756042/pexels-photo-3756042.jpeg?auto=compress&cs=tinysrgb&w=800",
-    ],
-    colors: ["#111827", "#0ea5e9"],
-    sizes: [39, 40, 41, 42, 43],
-    tags: ["running", "performance"],
-  },
-];
+import { loadProducts } from "./products.js";
+
+// Data model (populated from products.json)
+let products = [];
 
 let favorites = new Set();
 let currentFilter = "all"; // category
@@ -228,6 +52,7 @@ const modalAddToCart = document.getElementById("modalAddToCart");
 const sizeGuideModal = document.getElementById("sizeGuideModal");
 const sizeGuideTriggers = document.querySelectorAll(".link-button--small");
 const sizeGuideClosers = document.querySelectorAll("[data-size-guide-close]");
+const footerSizeGuide = document.getElementById("footerSizeGuide");
 
 // Reviews DOM
 const reviewsScoreEl = document.getElementById("reviewsScore");
@@ -252,9 +77,10 @@ let activeReviewFilter = "all";
 let lightboxIndex = 0;
 
 // Initialization
-function init() {
+async function init() {
   restoreFavorites();
   restoreCart();
+  products = await loadProducts();
   renderProducts();
   renderLatest();
   bindFilters();
@@ -777,6 +603,15 @@ function bindSizeGuide() {
       sizeGuideModal.setAttribute("aria-hidden", "false");
     });
   });
+
+  // Footer size guide button
+  if (footerSizeGuide) {
+    footerSizeGuide.addEventListener("click", () => {
+      if (!sizeGuideModal) return;
+      sizeGuideModal.classList.add("is-open");
+      sizeGuideModal.setAttribute("aria-hidden", "false");
+    });
+  }
 
   sizeGuideClosers.forEach((btn) => {
     btn.addEventListener("click", () => {

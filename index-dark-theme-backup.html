@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motion Wear | Premium Sneakers & Joggers</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app">
+    <!-- Top Navigation (Sticky) -->
+    <header class="top-nav" id="topNav">
+      <div class="logo">Motion Wear</div>
+      <nav class="main-nav">
+        <button class="nav-pill nav-pill--active" data-category="men">Men Shoes</button>
+        <button class="nav-pill nav-pill--disabled" disabled>Women Shoes</button>
+        <button class="nav-pill nav-pill--disabled" disabled>Kids</button>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-chip" id="searchToggle" aria-label="Search">
+          🔍
+        </button>
+        <button class="icon-chip" id="cartToggle" aria-label="Cart">
+          🛒
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <button class="icon-chip" aria-label="Profile">
+          👤
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Where Style Meets Comfort</h1>
+        <p class="hero-subtitle">
+          Join us to celebrate stylish, comfy footwear. Your path to extraordinary style begins here.
+        </p>
+        <button class="btn btn-primary" data-scroll-target="#collection">Get Started</button>
+        <div class="scroll-indicator" data-scroll-target="#collection" aria-hidden="true">
+          <span class="scroll-indicator-arrow"></span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-canvas-wrapper">
+          <canvas id="shoeCanvas" aria-label="3D view of a premium running shoe"></canvas>
+          <div class="hero-hint">Drag to rotate · Auto-rotating 3D view</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Collection -->
+    <main>
+      <section class="section section--featured reveal" id="collection">
+        <div class="section-header">
+          <h2 class="section-title">Footwear Elegance Collection</h2>
+          <p class="section-subtitle">Curated performance sneakers inspired by Nike, Adidas, New Balance and more.</p>
+        </div>
+
+        <div class="filters-row">
+          <div class="filter-group">
+            <span class="filter-label">Category:</span>
+            <button class="chip chip--active" data-filter="all">All</button>
+            <button class="chip" data-filter="running">Running</button>
+            <button class="chip" data-filter="casual">Casual</button>
+            <button class="chip" data-filter="sports">Sports</button>
+            <button class="chip" data-filter="limited">Limited Edition</button>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Brand:</span>
+            <select id="brandFilter" class="select select--brand">
+              <option value="all">All brands</option>
+              <option value="Nike">Nike</option>
+              <option value="Adidas">Adidas</option>
+              <option value="New Balance">New Balance</option>
+              <option value="Puma">Puma</option>
+              <option value="Reebok">Reebok</option>
+              <option value="Converse">Converse</option>
+              <option value="Vans">Vans</option>
+              <option value="Under Armour">Under Armour</option>
+            </select>
+          </div>
+          <div class="filter-group filter-group--grow">
+            <div class="search-shell" id="searchShell">
+              <span class="search-icon">🔍</span>
+              <input
+                type="search"
+                id="productSearch"
+                class="search-input"
+                placeholder="Search sneakers, brands, colors..."
+                autocomplete="off"
+              />
+              <div class="search-dropdown" id="searchDropdown" aria-live="polite"></div>
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Sort:</span>
+            <select id="sortSelect" class="select">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </section>
+
+      <!-- Latest Shoes Section -->
+      <section class="section section--latest reveal" id="latest">
+        <div class="section-header section-header--row">
+          <div>
+            <h2 class="section-title">Latest Shoes</h2>
+            <p class="section-subtitle">Fresh drops loved by our Motion community.</p>
+          </div>
+          <button class="link-button" data-scroll-target="#collection">Show all →</button>
+        </div>
+
+        <div class="latest-scroll-wrapper">
+          <button class="carousel-arrow carousel-arrow--left" id="latestPrev" aria-label="Previous">
+            ◀
+          </button>
+          <div class="latest-scroll" id="latestScroll" aria-label="Latest shoes carousel"></div>
+          <button class="carousel-arrow carousel-arrow--right" id="latestNext" aria-label="Next">
+            ▶
+          </button>
+        </div>
+      </section>
+
+      <!-- Brand Showcase -->
+      <section class="section section--brands reveal" id="brands">
+        <div class="section-header">
+          <h2 class="section-title">Shop by Brand</h2>
+          <p class="section-subtitle">Explore handpicked selections from the world’s leading sneaker brands.</p>
+        </div>
+        <div class="brand-grid" id="brandGrid">
+          <button class="brand-tile" data-brand="Nike">Nike</button>
+          <button class="brand-tile" data-brand="Adidas">Adidas</button>
+          <button class="brand-tile" data-brand="New Balance">New Balance</button>
+          <button class="brand-tile" data-brand="Puma">Puma</button>
+          <button class="brand-tile" data-brand="Reebok">Reebok</button>
+          <button class="brand-tile" data-brand="Converse">Converse</button>
+          <button class="brand-tile" data-brand="Vans">Vans</button>
+          <button class="brand-tile" data-brand="Under Armour">Under Armour</button>
+        </div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section class="section section--why reveal" id="why-us">
+        <div class="section-header">
+          <h2 class="section-title">Why Choose Motion Wear</h2>
+          <p class="section-subtitle">Premium sneakers, curated for all-day comfort and all-out performance.</p>
+        </div>
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="why-emoji">🚚</div>
+            <h3>Free Shipping</h3>
+            <p>Enjoy free delivery on all orders over $100 across major cities.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-emoji">🔄</div>
+            <h3>Easy Returns</h3>
+            <p>30-day hassle-free returns with instant credit or full refund options.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-emoji">💳</div>
+            <h3>Secure Payment</h3>
+            <p>SSL-encrypted checkout with all major cards and wallets supported.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-emoji">⭐</div>
+            <h3>Premium Quality</h3>
+            <p>Authentic products only, sourced directly from trusted partners.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="section section--newsletter reveal" id="newsletter">
+        <div class="newsletter-inner">
+          <div>
+            <h2 class="section-title">Stay Updated</h2>
+            <p class="section-subtitle">Get exclusive deals, early access, and the latest drops from Motion Wear.</p>
+          </div>
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <div class="newsletter-input-group">
+              <input
+                type="email"
+                id="newsletterEmail"
+                class="newsletter-input"
+                placeholder="Enter your email"
+                required
+              />
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+            <p class="newsletter-note">No spam. Unsubscribe anytime.</p>
+            <div class="newsletter-socials">
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="Facebook">Facebook</a>
+              <a href="#" aria-label="Twitter">Twitter</a>
+              <a href="#" aria-label="YouTube">YouTube</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="section section--footer" id="footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-title">Motion Wear</h3>
+          <p class="footer-text">Where Style Meets Comfort</p>
+          <p class="footer-text">Premium sneakers and joggers for the modern athlete.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-list">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Contact</a></li>
+            <li><a href="#" class="footer-link">FAQs</a></li>
+            <li><a href="#" class="footer-link">Shipping</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-list">
+            <li><a href="#collection" class="footer-link">Men Shoes</a></li>
+            <li><span class="footer-link footer-link--disabled">Women Shoes</span></li>
+            <li><span class="footer-link footer-link--disabled">Kids</span></li>
+            <li><a href="#latest" class="footer-link">New Arrivals</a></li>
+            <li><a href="#collection" class="footer-link">Sale</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Customer Service</h4>
+          <ul class="footer-list">
+            <li><a href="#" class="footer-link">Track Order</a></li>
+            <li><a href="#" class="footer-link">Returns</a></li>
+            <li><button class="footer-link" id="footerSizeGuide">Size Guide</button></li>
+            <li><a href="#" class="footer-link">Support</a></li>
+            <li><a href="#" class="footer-link">Live Chat</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 Motion Wear. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <span class="footer-divider">·</span>
+          <a href="#" class="footer-link">Terms & Conditions</a>
+        </div>
+        <div class="footer-payments">
+          <span class="payment-badge">VISA</span>
+          <span class="payment-badge">MC</span>
+          <span class="payment-badge">PAYPAL</span>
+          <span class="payment-badge">AMEX</span>
+          <span class="payment-badge">🔒 SSL</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-modal-close></div>
+      <div class="modal-dialog" role="document">
+        <button class="modal-close" aria-label="Close" data-modal-close>&times;</button>
+
+        <div class="modal-body">
+          <div class="modal-image-column">
+            <div class="modal-image-wrapper">
+              <img id="modalImage" src="" alt="Selected product" />
+              <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+          </div>
+
+          <div class="modal-info-column">
+            <div class="modal-header-row">
+              <div>
+                <h3 id="modalName" class="modal-title"></h3>
+                <p id="modalCategory" class="modal-category"></p>
+              </div>
+              <button id="modalFavorite" class="icon-button icon-button--heart" aria-label="Toggle favorite">
+                <span class="icon-heart"></span>
+              </button>
+            </div>
+
+            <div class="modal-price-rating">
+              <span id="modalPrice" class="modal-price"></span>
+              <div class="rating">
+                <span class="rating-stars">★★★★★</span>
+                <span id="modalRating" class="rating-score">5.0</span>
+              </div>
+            </div>
+
+            <div class="modal-options">
+              <div class="option-group">
+                <div class="option-label-row">
+                  <span class="option-label">Color</span>
+                </div>
+                <div class="color-swatches" id="modalColors"></div>
+              </div>
+
+              <div class="option-group">
+                <div class="option-label-row">
+                  <span class="option-label">Size</span>
+                  <button class="link-button link-button--small" type="button">Size guide</button>
+                </div>
+                <div class="size-grid" id="modalSizes"></div>
+              </div>
+            </div>
+
+            <div class="tabs" role="tablist">
+              <button class="tab tab--active" data-tab="description" role="tab" aria-selected="true">Description</button>
+              <button class="tab" data-tab="details" role="tab" aria-selected="false">Details</button>
+              <button class="tab" data-tab="reviews" role="tab" aria-selected="false">Reviews</button>
+            </div>
+            <div class="tab-panels">
+              <div class="tab-panel tab-panel--active" id="tab-description" role="tabpanel">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget nibh ut velit sollicitudin
+                  volutpat. Vivamus tincidunt, lorem non gravida luctus, justo felis condimentum neque, vitae ultricies
+                  massa nisi non urna.
+                </p>
+              </div>
+              <div class="tab-panel" id="tab-details" role="tabpanel">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed magna non turpis consequat
+                  hendrerit. Suspendisse interdum porttitor lacus, in commodo sapien vehicula nec.
+                </p>
+              </div>
+              <div class="tab-panel" id="tab-reviews" role="tabpanel">
+                <div class="reviews-header">
+                  <div class="reviews-summary">
+                    <div class="reviews-score" id="reviewsScore">5.0</div>
+                    <div class="reviews-meta" id="reviewsMeta">Based on 0 reviews</div>
+                  </div>
+                  <div class="reviews-actions">
+                    <div class="reviews-filters" id="reviewsFilters">
+                      <button class="chip" data-review-filter="all">All</button>
+                      <button class="chip" data-review-filter="5">5★</button>
+                      <button class="chip" data-review-filter="4">4★</button>
+                      <button class="chip" data-review-filter="3">3★ & below</button>
+                    </div>
+                    <button class="btn btn-secondary" type="button" id="writeReviewBtn">Write a review</button>
+                  </div>
+                </div>
+                <div class="reviews-list" id="reviewsList"></div>
+              </div>
+            </div>
+
+            <div class="modal-quantity">
+              <span class="option-label">Quantity</span>
+              <div class="qty-control">
+                <button type="button" class="qty-btn" data-qty="dec">-</button>
+                <span id="modalQty">1</span>
+                <button type="button" class="qty-btn" data-qty="inc">+</button>
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <button class="btn btn-primary" id="modalAddToCart">Add to Cart</button>
+              <button class="btn btn-secondary" id="modalBuyNow">Buy Now</button>
+            </div>
+
+            <ul class="modal-benefits">
+              <li>Free shipping on orders over $100</li>
+              <li>30-day return policy</li>
+              <li>Secure checkout powered by leading payment providers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+      <div class="cart-drawer-backdrop" id="cartBackdrop"></div>
+      <div class="cart-drawer-panel" role="dialog" aria-label="Shopping cart">
+        <header class="cart-drawer-header">
+          <h2>Your Cart</h2>
+          <button class="cart-drawer-close" id="cartClose" aria-label="Close cart">&times;</button>
+        </header>
+        <div class="cart-drawer-body" id="cartItems"></div>
+        <footer class="cart-drawer-footer">
+          <div class="cart-summary">
+            <div>
+              <span>Subtotal</span>
+              <strong id="cartSubtotal">$0</strong>
+            </div>
+            <p class="cart-note">Taxes and shipping calculated at checkout.</p>
+          </div>
+          <button class="btn btn-primary btn-full" id="cartCheckout">Proceed to Checkout</button>
+        </footer>
+      </div>
+    </aside>
+
+    <!-- Size Guide Modal -->
+    <div class="modal" id="sizeGuideModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-size-guide-close></div>
+      <div class="modal-dialog modal-dialog--narrow" role="document">
+        <button class="modal-close" aria-label="Close size guide" data-size-guide-close>&times;</button>
+        <div class="modal-body modal-body--single">
+          <div class="size-guide">
+            <h3 class="modal-title">Size Guide</h3>
+            <p class="modal-category">Find your perfect fit in US, UK, and EU sizes.</p>
+            <table class="size-guide-table" aria-label="Size conversion table">
+              <thead>
+                <tr>
+                  <th>US</th>
+                  <th>UK</th>
+                  <th>EU</th>
+                  <th>Foot length (cm)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>6</td><td>5.5</td><td>38</td><td>24.0</td></tr>
+                <tr><td>7</td><td>6.5</td><td>39</td><td>24.8</td></tr>
+                <tr><td>8</td><td>7.5</td><td>41</td><td>25.7</td></tr>
+                <tr><td>9</td><td>8.5</td><td>42</td><td>26.5</td></tr>
+                <tr><td>10</td><td>9.5</td><td>43</td><td>27.3</td></tr>
+                <tr><td>11</td><td>10.5</td><td>44</td><td>28.0</td></tr>
+              </tbody>
+            </table>
+            <p class="size-guide-note">
+              For the best experience, measure your foot in the afternoon and consider going half a size up for running
+              shoes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div class="lightbox" id="imageLightbox" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="lightbox-backdrop" data-lightbox-close></div>
+      <div class="lightbox-inner">
+        <button class="lightbox-close" aria-label="Close image" data-lightbox-close>&times;</button>
+        <button class="lightbox-arrow lightbox-arrow--left" id="lightboxPrev" aria-label="Previous image">◀</button>
+        <img id="lightboxImage" src="" alt="Product image enlarged" />
+        <button class="lightbox-arrow lightbox-arrow--right" id="lightboxNext" aria-label="Next image">▶</button>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" aria-label="Primary">
+      <button class="bottom-nav-item bottom-nav-item--active" data-scroll-target="#hero">
+        <span class="bottom-nav-icon">🏠</span>
+        <span class="bottom-nav-label">Home</span>
+      </button>
+      <button class="bottom-nav-item" data-scroll-target="#collection">
+        <span class="bottom-nav-icon">🔍</span>
+        <span class="bottom-nav-label">Search</span>
+      </button>
+      <button class="bottom-nav-item" data-filter="favorites">
+        <span class="bottom-nav-icon">❤</span>
+        <span class="bottom-nav-label">Favorites</span>
+      </button>
+      <button class="bottom-nav-item">
+        <span class="bottom-nav-icon">👤</span>
+        <span class="bottom-nav-label">Profile</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
