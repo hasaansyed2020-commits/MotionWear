@@ -1,148 +1,119 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Search, ShoppingCart, User, Menu, X } from 'lucide-react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ShoppingCart, User, Menu, X, Search } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [cartCount, setCartCount] = useState(0)
-  const pathname = usePathname()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Shop', path: '/products' },
-    { name: 'About', path: '/about' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' }
-  ]
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Products', href: '/products' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' }
+  ];
 
   return (
-    <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-lg shadow-md'
-            : 'bg-white/80 backdrop-blur-sm'
-        }`}
-      >
-        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/90 backdrop-blur-lg shadow-lg'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="text-xl md:text-2xl font-bold text-gray-900 hover:text-primary-500 transition-colors">
-            MOTION WEAR
-          </Link>
+          <Logo variant="default" />
 
-          {/* Desktop Menu */}
-          <ul className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  href={item.path}
-                  className={`text-base font-medium transition-all duration-200 ${
-                    pathname === item.path
-                      ? 'text-primary-500'
-                      : 'text-gray-600 hover:text-primary-500 hover:scale-105'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </li>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-gray-700 hover:text-purple-600 font-medium transition-colors relative group"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-purple-800 group-hover:w-full transition-all duration-300" />
+              </Link>
             ))}
-          </ul>
+          </div>
 
-          {/* Icons */}
-          <div className="flex items-center gap-3 md:gap-6">
-            {/* Search - Hidden on mobile */}
-            <button
-              className="hidden sm:flex w-10 h-10 items-center justify-center text-gray-600 
-                       hover:text-primary-500 hover:bg-primary-50 rounded-full 
-                       transition-all duration-200 hover:scale-110"
-              aria-label="Search"
-            >
-              <Search size={20} />
+          {/* Right Icons */}
+          <div className="flex items-center space-x-4">
+            <button className="p-2 hover:bg-purple-50 rounded-full transition-colors">
+              <Search className="w-5 h-5 text-gray-700" />
             </button>
-
-            {/* Cart */}
-            <Link
-              href="/cart"
-              className="relative w-10 h-10 flex items-center justify-center text-gray-600 
-                       hover:text-primary-500 hover:bg-primary-50 rounded-full 
-                       transition-all duration-200 hover:scale-110"
-              aria-label="Cart"
-            >
-              <ShoppingCart size={20} />
+            
+            <Link href="/login" className="p-2 hover:bg-purple-50 rounded-full transition-colors">
+              <User className="w-5 h-5 text-gray-700" />
+            </Link>
+            
+            <Link href="/cart" className="relative p-2 hover:bg-purple-50 rounded-full transition-colors">
+              <ShoppingCart className="w-5 h-5 text-gray-700" />
               {cartCount > 0 && (
-                <span className="absolute top-0.5 right-0.5 w-[18px] h-[18px] 
-                               bg-primary-500 text-white text-[11px] font-semibold 
-                               rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-purple-600 to-purple-800 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
                   {cartCount}
                 </span>
               )}
             </Link>
 
-            {/* Profile - Hidden on mobile */}
-            <Link
-              href="/login"
-              className="hidden sm:flex w-10 h-10 items-center justify-center text-gray-600 
-                       hover:text-primary-500 hover:bg-primary-50 rounded-full 
-                       transition-all duration-200 hover:scale-110"
-              aria-label="Profile"
-            >
-              <User size={20} />
-            </Link>
-
             {/* Mobile Menu Button */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center text-gray-600 
-                       hover:text-primary-500 hover:bg-primary-50 rounded-full 
-                       transition-all duration-200"
-              aria-label="Menu"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 hover:bg-purple-50 rounded-full transition-colors"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-gray-700" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-700" />
+              )}
             </button>
           </div>
         </div>
-      </nav>
 
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          <div className="absolute top-20 right-0 w-64 bg-white shadow-xl rounded-l-2xl p-6">
-            <ul className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <li key={item.name}>
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white border-t border-gray-200"
+            >
+              <div className="py-4 space-y-3">
+                {navLinks.map((link) => (
                   <Link
-                    href={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`block text-lg font-medium transition-colors py-2 ${
-                      pathname === item.path
-                        ? 'text-primary-500'
-                        : 'text-gray-600 hover:text-primary-500'
-                    }`}
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
                   >
-                    {item.name}
+                    {link.name}
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
-    </>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.nav>
   )
 }
