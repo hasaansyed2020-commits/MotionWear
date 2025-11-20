@@ -33,14 +33,17 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 backdrop-blur-lg shadow-lg'
-          : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-lg shadow-lg'
+          : 'bg-white/90 backdrop-blur-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Logo variant="default" />
+          
+          {/* Logo - NO GREY BOX */}
+          <div className="flex-shrink-0">
+            <Logo variant="default" />
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -58,15 +61,26 @@ export default function Navbar() {
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
-            <button className="p-2 hover:bg-purple-50 rounded-full transition-colors">
+            <button 
+              className="p-2 hover:bg-purple-50 rounded-full transition-colors"
+              aria-label="Search"
+            >
               <Search className="w-5 h-5 text-gray-700" />
             </button>
             
-            <Link href="/login" className="p-2 hover:bg-purple-50 rounded-full transition-colors">
+            <Link 
+              href="/auth" 
+              className="p-2 hover:bg-purple-50 rounded-full transition-colors"
+              aria-label="User account"
+            >
               <User className="w-5 h-5 text-gray-700" />
             </Link>
             
-            <Link href="/cart" className="relative p-2 hover:bg-purple-50 rounded-full transition-colors">
+            <Link 
+              href="/cart" 
+              className="relative p-2 hover:bg-purple-50 rounded-full transition-colors"
+              aria-label="Shopping cart"
+            >
               <ShoppingCart className="w-5 h-5 text-gray-700" />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-gradient-to-r from-purple-600 to-purple-800 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
@@ -79,6 +93,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 hover:bg-purple-50 rounded-full transition-colors"
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6 text-gray-700" />
@@ -99,12 +114,17 @@ export default function Navbar() {
               className="md:hidden bg-white border-t border-gray-200"
             >
               <div className="py-4 space-y-3">
+                {/* Logo in Mobile Menu */}
+                <div className="px-4 pb-3 border-b border-gray-200">
+                  <Logo variant="small" />
+                </div>
+                
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                    className="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors font-medium"
                   >
                     {link.name}
                   </Link>

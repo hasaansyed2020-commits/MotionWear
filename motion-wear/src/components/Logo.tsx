@@ -1,6 +1,3 @@
-'use client';
-
-import Image from 'next/image';
 import Link from 'next/link';
 
 interface LogoProps {
@@ -9,24 +6,27 @@ interface LogoProps {
 }
 
 export default function Logo({ variant = 'default', className = '' }: LogoProps) {
-  const sizes = {
-    small: { width: 120, height: 40 },
-    default: { width: 180, height: 60 },
-    large: { width: 240, height: 80 },
-    footer: { width: 200, height: 67 }
+  const heights = {
+    small: '38px',
+    default: '52px',
+    large: '71px',
+    footer: '58px'
   };
 
-  const size = sizes[variant];
-
   return (
-    <Link href="/" className={`inline-block ${className}`}>
-      <Image
-        src="https://www.genspark.ai/api/files/s/6nihDxKs?cache_control=3600"
+    <Link 
+      href="/" 
+      className={`inline-block ${className}`}
+    >
+      <img
+        src="/logo.png"
         alt="Motion Wear - Where Style Meets Comfort"
-        width={size.width}
-        height={size.height}
-        priority
-        className="w-auto h-auto object-contain hover:scale-105 transition-transform duration-300"
+        style={{ 
+          height: heights[variant],
+          width: 'auto',
+          display: 'block'
+        }}
+        className="object-contain hover:scale-105 transition-transform duration-300"
       />
     </Link>
   );

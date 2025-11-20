@@ -42,7 +42,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <Logo variant="footer" className="mb-4 brightness-0 invert" />
+            {/* Logo with white filter for dark background */}
+            <div className="mb-4" style={{ filter: 'brightness(0) invert(1)' }}>
+              <Logo variant="footer" />
+            </div>
             <p className="text-gray-400 mb-6 max-w-sm">
               Where Style Meets Comfort. Premium sneakers and joggers for the modern man who values both fashion and functionality.
             </p>

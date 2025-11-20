@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export default function LoadingScreen() {
   return (
@@ -12,14 +11,17 @@ export default function LoadingScreen() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
           className="mb-8"
+          style={{ filter: 'brightness(0) invert(1)' }}
         >
-          <Image
-            src="https://www.genspark.ai/api/files/s/6nihDxKs?cache_control=3600"
+          <img
+            src="/logo.png"
             alt="Motion Wear"
-            width={240}
-            height={80}
-            className="brightness-0 invert"
-            priority
+            style={{ 
+              height: '71px',
+              width: 'auto',
+              display: 'block',
+              margin: '0 auto'
+            }}
           />
         </motion.div>
 
