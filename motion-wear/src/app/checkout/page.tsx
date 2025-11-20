@@ -23,8 +23,23 @@ export default function CheckoutPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20 pb-24 bg-gray-50 min-h-screen">
+      <main className="pt-52 pb-24 bg-gray-50 min-h-screen">
         <div className="max-w-screen-xl mx-auto px-6 md:px-12">
+          
+          {/* Logo Header - SUPER LARGE */}
+          <div className="flex justify-center py-8">
+            <img
+              src="/logo.png"
+              alt="Motion Wear"
+              className="h-36 w-auto object-contain"
+              style={{
+                background: 'transparent',
+                maxHeight: '144px',
+                filter: 'brightness(1.2) contrast(1.1)',
+                mixBlendMode: 'multiply'
+              }}
+            />
+          </div>
           
           {/* Progress Steps */}
           <div className="py-8">

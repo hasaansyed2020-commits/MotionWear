@@ -9,15 +9,30 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20 pb-24 bg-gray-50">
+      <main className="pt-52 pb-24 bg-gray-50">
         <div className="max-w-screen-xl mx-auto px-6 md:px-12">
           
-          {/* Header */}
+          {/* Header with Logo */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-16"
           >
+            {/* Logo - SUPER LARGE */}
+            <div className="flex justify-center mb-8">
+              <img
+                src="/logo.png"
+                alt="Motion Wear"
+                className="h-40 w-auto object-contain"
+                style={{
+                  background: 'transparent',
+                  maxHeight: '160px',
+                  filter: 'brightness(1.2) contrast(1.1)',
+                  mixBlendMode: 'multiply'
+                }}
+              />
+            </div>
+            
             <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent mb-6">
               Get In Touch
             </h1>

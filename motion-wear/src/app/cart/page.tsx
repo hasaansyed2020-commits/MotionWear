@@ -75,7 +75,7 @@ export default function CartPage() {
     return (
       <>
         <Navbar />
-        <main className="pt-20 min-h-screen flex items-center justify-center">
+        <main className="pt-52 min-h-screen flex items-center justify-center">
           <div className="text-center px-6">
             <motion.div
               initial={{ scale: 0 }}
@@ -111,7 +111,7 @@ export default function CartPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20 pb-24 bg-gray-50 min-h-screen">
+      <main className="pt-52 pb-24 bg-gray-50 min-h-screen">
         <div className="max-w-screen-xl mx-auto px-6 md:px-12">
           {/* Header */}
           <div className="py-8">

@@ -67,7 +67,7 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20 pb-24">
+      <main className="pt-52 pb-24 bg-gray-50">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-screen-xl mx-auto px-6 md:px-12">

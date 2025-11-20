@@ -24,8 +24,6 @@ const testimonials = [
   }
 ]
 
-const brands = ['Nike', 'Adidas', 'Puma', 'Reebok', 'New Balance', 'Converse']
-
 export default function SocialProof() {
   return (
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
@@ -123,29 +121,6 @@ export default function SocialProof() {
           </div>
         </div>
 
-        {/* Brand Logos */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <p className="text-sm text-gray-500 font-medium mb-8">
-            OFFICIAL PARTNER OF PREMIUM BRANDS
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            {brands.map((brand, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.1 }}
-                className="text-2xl font-bold text-gray-300 hover:text-primary-500 
-                         transition-colors cursor-pointer"
-              >
-                {brand}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )

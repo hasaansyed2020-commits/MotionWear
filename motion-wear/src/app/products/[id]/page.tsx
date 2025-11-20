@@ -48,7 +48,7 @@ export default function ProductDetailPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20 pb-24 bg-gray-50">
+      <main className="pt-52 pb-24 bg-gray-50">
         <div className="max-w-screen-xl mx-auto px-6 md:px-12">
           
           {/* Back Button */}

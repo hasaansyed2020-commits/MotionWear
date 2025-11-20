@@ -31,11 +31,24 @@ export default function AuthPage() {
           className="hidden lg:block"
         >
           <div className="relative">
-            {/* Brand Card */}
+            {/* Brand Card with Logo */}
             <div className="relative aspect-square rounded-3xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-secondary-500 
                             flex items-center justify-center">
                 <div className="text-center text-white p-12">
+                  {/* Super Large Logo */}
+                  <div className="flex justify-center mb-6">
+                    <img
+                      src="/logo.png"
+                      alt="Motion Wear"
+                      className="h-48 w-auto object-contain"
+                      style={{
+                        maxHeight: '192px',
+                        filter: 'brightness(0) invert(1)'
+                      }}
+                    />
+                  </div>
+                  
                   <h2 className="text-5xl font-extrabold mb-6">
                     MOTION WEAR
                   </h2>

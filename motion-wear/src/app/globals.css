@@ -9,10 +9,17 @@
   
   html {
     @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
   
   body {
     @apply font-sans text-gray-900 antialiased;
+    scroll-behavior: smooth;
+  }
+  
+  /* Smooth scrolling for all elements */
+  * {
+    scroll-behavior: smooth !important;
   }
 }
 
@@ -43,16 +50,75 @@
   }
 }
 
-/* Logo specific styles - Remove any background or grey box */
-a[href="/"] img,
-.logo-container img {
-  background: transparent !important;
-  mix-blend-mode: normal;
+/* Float Animation for 3D Elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
-/* Ensure Next.js Image wrapper has no background */
-a[href="/"] > span,
-.logo-container > span {
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 3D Transform Support */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* NUCLEAR OPTION - Remove ALL possible backgrounds from logo */
+img[src="/logo.png"],
+img[src*="logo"],
+img[alt*="Motion Wear"],
+img[alt*="Motion"],
+a[href="/"] img,
+a[href="/"] > *,
+nav img,
+.flex-shrink-0 img,
+.logo-container img,
+.logo-container > * {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Force ALL logo wrappers to be transparent */
+a[href="/"],
+a[href="/"] *,
+div:has(> a[href="/"]),
+.flex-shrink-0,
+.logo-container {
   background: transparent !important;
-  display: inline-flex !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  display: inline-block !important;
+}
+
+/* Override navbar backgrounds on logo area */
+nav img[src="/logo.png"],
+nav a[href="/"],
+nav .flex-shrink-0,
+header img[src="/logo.png"],
+footer img[src="/logo.png"] {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }

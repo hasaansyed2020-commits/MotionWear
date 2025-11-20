@@ -12,7 +12,7 @@ const featuredProducts = [
     category: "Men's Running",
     price: 180,
     originalPrice: 220,
-    image: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
     badge: "Bestseller",
     rating: 4.9,
     colors: ["#000000", "#FFFFFF", "#FF0000"]
@@ -23,7 +23,7 @@ const featuredProducts = [
     category: "Men's Training",
     price: 200,
     originalPrice: 250,
-    image: "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&q=80",
     badge: "New",
     rating: 4.8,
     colors: ["#000000", "#FFFFFF", "#0000FF"]
@@ -34,7 +34,7 @@ const featuredProducts = [
     category: "Men's Lifestyle",
     price: 150,
     originalPrice: 190,
-    image: "https://images.pexels.com/photos/1456705/pexels-photo-1456705.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=800&q=80",
     badge: "Sale",
     rating: 4.7,
     colors: ["#FF0000", "#FFFFFF", "#00FF00"]
@@ -45,7 +45,7 @@ const featuredProducts = [
     category: "Men's Casual",
     price: 175,
     originalPrice: 210,
-    image: "https://images.pexels.com/photos/2404959/pexels-photo-2404959.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&q=80",
     badge: "Popular",
     rating: 4.9,
     colors: ["#808080", "#FFFFFF", "#000000"]

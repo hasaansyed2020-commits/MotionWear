@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-52">
         {/* Hero Section */}
         <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-screen-xl mx-auto px-6 md:px-12">
@@ -18,6 +18,21 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center max-w-3xl mx-auto"
             >
+              {/* Logo - SUPER LARGE */}
+              <div className="flex justify-center mb-8">
+                <img
+                  src="/logo.png"
+                  alt="Motion Wear"
+                  className="h-40 w-auto object-contain"
+                  style={{
+                    background: 'transparent',
+                    maxHeight: '160px',
+                    filter: 'brightness(1.2) contrast(1.1)',
+                    mixBlendMode: 'multiply'
+                  }}
+                />
+              </div>
+              
               <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent mb-6">
                 Our Story
               </h1>

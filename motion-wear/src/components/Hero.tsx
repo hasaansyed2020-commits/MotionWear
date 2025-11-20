@@ -1,6 +1,6 @@
 'use client'
 
-import Shoe3D from './Shoe3D'
+import ShoeRotating from './ShoeRotating'
 import ScrollIndicator from './ScrollIndicator'
 import { ArrowRight } from 'lucide-react'
 
@@ -16,7 +16,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="min-h-screen pt-20 flex items-center">
+    <section className="min-h-screen pt-52 flex items-center">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-16 items-center">
           
@@ -74,7 +74,7 @@ export default function Hero() {
           {/* Right Side - 3D Shoe */}
           <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] 
                         flex items-center justify-center">
-            <Shoe3D />
+            <ShoeRotating autoRotate={true} rotationSpeed={2500} />
             
             {/* Decorative Elements */}
             <div className="absolute inset-0 -z-10">

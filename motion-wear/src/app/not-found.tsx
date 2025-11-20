@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 import { Home, ArrowLeft } from 'lucide-react';
 import Logo from '@/components/Logo';
@@ -8,7 +10,7 @@ export default function NotFound() {
       <div className="text-center max-w-2xl">
         {/* Logo */}
         <div className="flex justify-center mb-8">
-          <Logo variant="large" />
+          <Logo variant="error" clickable={false} />
         </div>
 
         {/* 404 Animation */}

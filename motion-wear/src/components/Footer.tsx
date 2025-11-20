@@ -40,11 +40,10 @@ export default function Footer() {
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-          {/* Brand Section */}
+          {/* Brand Section with Logo */}
           <div className="lg:col-span-2">
-            {/* Logo with white filter for dark background */}
-            <div className="mb-4" style={{ filter: 'brightness(0) invert(1)' }}>
-              <Logo variant="footer" />
+            <div className="mb-4">
+              <Logo variant="footer" isDark={true} />
             </div>
             <p className="text-gray-400 mb-6 max-w-sm">
               Where Style Meets Comfort. Premium sneakers and joggers for the modern man who values both fashion and functionality.

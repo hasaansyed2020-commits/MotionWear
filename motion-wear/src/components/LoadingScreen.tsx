@@ -1,28 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 
 export default function LoadingScreen() {
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900 flex items-center justify-center z-[9999]">
       <div className="text-center">
+        {/* Large Logo */}
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="mb-8"
-          style={{ filter: 'brightness(0) invert(1)' }}
         >
-          <img
-            src="/logo.png"
-            alt="Motion Wear"
-            style={{ 
-              height: '71px',
-              width: 'auto',
-              display: 'block',
-              margin: '0 auto'
-            }}
-          />
+          <Logo variant="loading" isDark={true} clickable={false} />
         </motion.div>
 
         <motion.div

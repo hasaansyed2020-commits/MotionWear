@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, User, Menu, X, Search } from 'lucide-react';
-import Logo from './Logo';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
+  const [cartCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,72 +32,74 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-lg shadow-lg'
-          : 'bg-white/90 backdrop-blur-md'
+          ? 'bg-white/98 backdrop-blur-xl shadow-2xl border-b border-gray-100'
+          : 'bg-white/95 backdrop-blur-lg shadow-lg'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-44">
           
-          {/* Logo - NO GREY BOX */}
+          {/* LEFT: LOGO - NO GREY BACKGROUND */}
           <div className="flex-shrink-0">
-            <Logo variant="default" />
+            <Link href="/" className="block group">
+              <img
+                src="/logo.png"
+                alt="Motion Wear"
+                className="h-44 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                style={{
+                  maxHeight: '176px',
+                  minHeight: '176px',
+                  backgroundColor: 'transparent',
+                  filter: 'contrast(1.1) saturate(1.15) brightness(1.05)',
+                  mixBlendMode: 'multiply',
+                  imageRendering: 'crisp-edges'
+                }}
+              />
+            </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* CENTER: Desktop Navigation - EXTRA BOLD */}
+          <nav className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-purple-600 font-medium transition-colors relative group"
+                className="text-gray-800 hover:text-purple-600 font-extrabold text-xl tracking-wide transition-all duration-300 relative group whitespace-nowrap hover:scale-105"
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-purple-800 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-purple-600 to-purple-800 group-hover:w-full transition-all duration-300 rounded-full" />
               </Link>
             ))}
-          </div>
+          </nav>
 
-          {/* Right Icons */}
+          {/* RIGHT: Icons - BOLD & LARGER */}
           <div className="flex items-center space-x-4">
-            <button 
-              className="p-2 hover:bg-purple-50 rounded-full transition-colors"
-              aria-label="Search"
-            >
-              <Search className="w-5 h-5 text-gray-700" />
+            <button className="hidden md:flex p-3 hover:bg-purple-100 rounded-full transition-all duration-300 hover:scale-110">
+              <Search className="w-7 h-7 text-gray-800 stroke-[2.5]" />
             </button>
             
-            <Link 
-              href="/auth" 
-              className="p-2 hover:bg-purple-50 rounded-full transition-colors"
-              aria-label="User account"
-            >
-              <User className="w-5 h-5 text-gray-700" />
+            <Link href="/auth" className="hidden md:flex p-3 hover:bg-purple-100 rounded-full transition-all duration-300 hover:scale-110">
+              <User className="w-7 h-7 text-gray-800 stroke-[2.5]" />
             </Link>
             
-            <Link 
-              href="/cart" 
-              className="relative p-2 hover:bg-purple-50 rounded-full transition-colors"
-              aria-label="Shopping cart"
-            >
-              <ShoppingCart className="w-5 h-5 text-gray-700" />
+            <Link href="/cart" className="hidden md:flex relative p-3 hover:bg-purple-100 rounded-full transition-all duration-300 hover:scale-110">
+              <ShoppingCart className="w-7 h-7 text-gray-800 stroke-[2.5]" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-purple-600 to-purple-800 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-purple-600 to-purple-800 text-white text-sm rounded-full w-7 h-7 flex items-center justify-center font-extrabold shadow-lg">
                   {cartCount}
                 </span>
               )}
             </Link>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - BOLD */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-purple-50 rounded-full transition-colors"
-              aria-label="Toggle menu"
+              className="md:hidden p-3 hover:bg-purple-100 rounded-full transition-all duration-300 hover:scale-110"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
+                <X className="w-8 h-8 text-gray-800 stroke-[2.5]" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
+                <Menu className="w-8 h-8 text-gray-800 stroke-[2.5]" />
               )}
             </button>
           </div>
@@ -114,17 +115,32 @@ export default function Navbar() {
               className="md:hidden bg-white border-t border-gray-200"
             >
               <div className="py-4 space-y-3">
-                {/* Logo in Mobile Menu */}
-                <div className="px-4 pb-3 border-b border-gray-200">
-                  <Logo variant="small" />
-                </div>
+                {/* Logo in Mobile Menu - NO GREY */}
+                <Link 
+                  href="/" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex justify-center px-4 pb-4 border-b border-gray-200"
+                >
+                  <img
+                    src="/logo.png"
+                    alt="Motion Wear"
+                    className="h-36 w-auto object-contain"
+                    style={{ 
+                      maxHeight: '144px',
+                      backgroundColor: 'transparent',
+                      filter: 'contrast(1.1) saturate(1.15) brightness(1.05)',
+                      mixBlendMode: 'multiply',
+                      imageRendering: 'crisp-edges'
+                    }}
+                  />
+                </Link>
                 
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors font-medium"
+                    className="block px-4 py-3 text-gray-800 hover:bg-purple-100 hover:text-purple-600 transition-all duration-300 font-extrabold text-xl tracking-wide hover:pl-6"
                   >
                     {link.name}
                   </Link>
