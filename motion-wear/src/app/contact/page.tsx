@@ -21,14 +21,16 @@ export default function ContactPage() {
             {/* Logo - SUPER LARGE */}
             <div className="flex justify-center mb-8">
               <img
-                src="/logo.png"
+                src="/updated_logo.png"
                 alt="Motion Wear"
                 className="h-40 w-auto object-contain"
                 style={{
                   background: 'transparent',
-                  maxHeight: '160px',
-                  filter: 'brightness(1.2) contrast(1.1)',
-                  mixBlendMode: 'multiply'
+                  maxHeight: '250px',
+                  minHeight: '216px',
+                  filter: 'contrast(1.1) saturate(1.15) brightness(1.05)',
+                  mixBlendMode: 'multiply',
+                  imageRendering: 'crisp-edges'
                 }}
               />
             </div>

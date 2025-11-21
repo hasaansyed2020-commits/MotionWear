@@ -29,14 +29,16 @@ export default function CheckoutPage() {
           {/* Logo Header - SUPER LARGE */}
           <div className="flex justify-center py-8">
             <img
-              src="/logo.png"
+              src="/updated_logo.png"
               alt="Motion Wear"
               className="h-36 w-auto object-contain"
               style={{
                 background: 'transparent',
-                maxHeight: '144px',
-                filter: 'brightness(1.2) contrast(1.1)',
-                mixBlendMode: 'multiply'
+                maxHeight: '250px',
+                minHeight: '216px',
+                filter: 'contrast(1.1) saturate(1.15) brightness(1.05)',
+                mixBlendMode: 'multiply',
+                imageRendering: 'crisp-edges'
               }}
             />
           </div>

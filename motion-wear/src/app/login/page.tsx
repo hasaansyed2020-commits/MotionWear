@@ -39,11 +39,12 @@ export default function AuthPage() {
                   {/* Super Large Logo */}
                   <div className="flex justify-center mb-6">
                     <img
-                      src="/logo.png"
+                      src="/updated_logo.png"
                       alt="Motion Wear"
                       className="h-48 w-auto object-contain"
                       style={{
-                        maxHeight: '192px',
+                        maxHeight: '250px',
+                        minHeight: '216px',
                         filter: 'brightness(0) invert(1)'
                       }}
                     />

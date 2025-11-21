@@ -43,12 +43,12 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="block group">
               <img
-                src="/logo.png"
+                src="/updated_logo.png"
                 alt="Motion Wear"
                 className="h-44 w-auto object-contain hover:scale-105 transition-transform duration-300"
                 style={{
-                  maxHeight: '176px',
-                  minHeight: '176px',
+                  maxHeight: '250px',
+                  minHeight: '216px',
                   backgroundColor: 'transparent',
                   filter: 'contrast(1.1) saturate(1.15) brightness(1.05)',
                   mixBlendMode: 'multiply',
@@ -122,11 +122,12 @@ export default function Navbar() {
                   className="flex justify-center px-4 pb-4 border-b border-gray-200"
                 >
                   <img
-                    src="/logo.png"
+                    src="/updated_logo.png"
                     alt="Motion Wear"
                     className="h-36 w-auto object-contain"
                     style={{ 
-                      maxHeight: '144px',
+                      maxHeight: '250px',
+                      minHeight: '216px',
                       backgroundColor: 'transparent',
                       filter: 'contrast(1.1) saturate(1.15) brightness(1.05)',
                       mixBlendMode: 'multiply',

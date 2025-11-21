@@ -71,10 +71,10 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Side - 3D Shoe */}
+          {/* Right Side - Tilted Shoe Display */}
           <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] 
                         flex items-center justify-center">
-            <ShoeRotating autoRotate={true} rotationSpeed={2500} />
+            <ShoeRotating />
             
             {/* Decorative Elements */}
             <div className="absolute inset-0 -z-10">
