@@ -36,19 +36,18 @@ export default function Navbar() {
           : 'bg-white/95 backdrop-blur-lg shadow-lg'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-44">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-24 sm:h-32 md:h-40 lg:h-44">
           
-          {/* LEFT: LOGO - NO GREY BACKGROUND */}
+          {/* LEFT: LOGO - RESPONSIVE */}
           <div className="flex-shrink-0">
             <Link href="/" className="block group">
               <img
                 src="/updated_logo.png"
                 alt="Motion Wear"
-                className="h-44 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                className="h-20 sm:h-28 md:h-36 lg:h-44 w-auto object-contain hover:scale-105 transition-transform duration-300"
                 style={{
                   maxHeight: '250px',
-                  minHeight: '216px',
                   backgroundColor: 'transparent',
                   filter: 'contrast(1.1) saturate(1.15) brightness(1.05)',
                   mixBlendMode: 'multiply',
@@ -119,29 +118,28 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - PROFESSIONAL & SMOOTH */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-gray-200"
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="md:hidden bg-white border-t-2 border-gray-200 shadow-xl"
             >
-              <div className="py-4 space-y-3">
-                {/* Logo in Mobile Menu - NO GREY */}
+              <div className="py-6 px-2 space-y-2 max-h-[calc(100vh-96px)] overflow-y-auto">
+                {/* Logo in Mobile Menu */}
                 <Link 
                   href="/" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex justify-center px-4 pb-4 border-b border-gray-200"
+                  className="flex justify-center px-4 pb-6 mb-4 border-b-2 border-gray-200"
                 >
                   <img
                     src="/updated_logo.png"
                     alt="Motion Wear"
-                    className="h-36 w-auto object-contain"
+                    className="h-28 w-auto object-contain"
                     style={{ 
-                      maxHeight: '250px',
-                      minHeight: '216px',
                       backgroundColor: 'transparent',
                       filter: 'contrast(1.1) saturate(1.15) brightness(1.05)',
                       mixBlendMode: 'multiply',
@@ -150,37 +148,58 @@ export default function Navbar() {
                   />
                 </Link>
                 
-                {navLinks.map((link) => (
-                  <Link
+                {/* Navigation Links */}
+                {navLinks.map((link, index) => (
+                  <motion.div
                     key={link.name}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-gray-800 hover:bg-purple-100 hover:text-purple-600 transition-all duration-300 font-extrabold text-xl tracking-wide hover:pl-6"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    {link.name}
-                  </Link>
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block px-5 py-4 mx-2 text-gray-800 hover:bg-gradient-to-r hover:from-purple-50 hover:to-purple-100 
+                               hover:text-purple-700 active:bg-purple-200 transition-all duration-300 
+                               font-bold text-lg tracking-wide rounded-xl hover:scale-[1.02] hover:shadow-md"
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
                 ))}
                 
                 {/* Mobile Auth Buttons */}
-                <div className="px-4 pt-4 border-t border-gray-200 space-y-3">
+                <div className="px-2 pt-6 mt-4 border-t-2 border-gray-200 space-y-3">
                   <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)}>
-                    <button className="w-full px-4 py-3 text-gray-800 hover:bg-purple-100 hover:text-purple-600 transition-all duration-300 font-extrabold text-xl tracking-wide text-left hover:pl-6">
-                      Profile
+                    <button className="w-full px-5 py-4 text-gray-800 hover:bg-purple-50 hover:text-purple-700 
+                                     active:bg-purple-100 transition-all duration-300 font-bold text-base 
+                                     text-center rounded-xl border-2 border-gray-200 hover:border-purple-300 
+                                     hover:shadow-md active:scale-[0.98]">
+                      👤 Profile
                     </button>
                   </Link>
                   <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)}>
-                    <button className="w-full px-4 py-3 text-gray-800 hover:bg-purple-100 hover:text-purple-600 transition-all duration-300 font-extrabold text-xl tracking-wide text-left hover:pl-6">
-                      Cart
+                    <button className="w-full px-5 py-4 text-gray-800 hover:bg-purple-50 hover:text-purple-700 
+                                     active:bg-purple-100 transition-all duration-300 font-bold text-base 
+                                     text-center rounded-xl border-2 border-gray-200 hover:border-purple-300 
+                                     hover:shadow-md active:scale-[0.98]">
+                      🛒 Cart
                     </button>
                   </Link>
                   <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                    <button className="w-full px-4 py-3 text-gray-800 hover:bg-purple-100 hover:text-purple-600 transition-all duration-300 font-bold text-lg text-center rounded-xl border-2 border-gray-300">
+                    <button className="w-full px-5 py-4 text-white bg-gradient-to-r from-purple-600 to-purple-800 
+                                     active:from-purple-700 active:to-purple-900 transition-all duration-300 
+                                     font-bold text-base text-center rounded-xl shadow-lg hover:shadow-xl 
+                                     active:scale-[0.98]">
                       Login
                     </button>
                   </Link>
                   <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                    <button className="w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold text-lg rounded-xl hover:shadow-lg transition-all">
-                      Sign Up Free
+                    <button className="w-full px-5 py-4 text-white bg-gradient-to-r from-green-500 to-emerald-600 
+                                     active:from-green-600 active:to-emerald-700 transition-all duration-300 
+                                     font-bold text-base text-center rounded-xl shadow-lg hover:shadow-xl 
+                                     active:scale-[0.98]">
+                      🎉 Sign Up Free
                     </button>
                   </Link>
                 </div>

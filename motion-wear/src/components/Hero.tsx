@@ -16,44 +16,48 @@ export default function Hero() {
   }
 
   return (
-    <section className="min-h-screen pt-52 flex items-center">
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-16 items-center">
+    <section className="min-h-screen pt-32 sm:pt-40 md:pt-52 pb-12 flex items-center">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-8 sm:gap-10 lg:gap-16 items-center">
           
           {/* Left Side - Content */}
-          <div className="max-w-xl text-center lg:text-left">
+          <div className="max-w-xl text-center lg:text-left order-2 lg:order-1">
             {/* Brand Name */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-hero 
-                         font-extrabold text-gray-900 mb-3 md:mb-4 tracking-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-hero 
+                         font-extrabold text-gray-900 mb-2 sm:mb-3 md:mb-4 tracking-tight 
+                         leading-tight">
               MOTION WEAR
             </h1>
 
             {/* Tagline */}
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-display 
-                         font-extrabold mb-4 md:mb-6 gradient-text">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-display 
+                         font-extrabold mb-3 sm:mb-4 md:mb-6 gradient-text 
+                         leading-tight">
               Where Style Meets Comfort
             </h2>
 
             {/* Description */}
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed 
-                        mb-8 md:mb-10 max-w-md mx-auto lg:mx-0">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed 
+                        mb-6 sm:mb-8 md:mb-10 max-w-md mx-auto lg:mx-0 px-2 sm:px-0">
               Discover premium sneakers and joggers from the world&apos;s top brands. 
               Experience extraordinary comfort and style with our curated collection 
               of footwear designed for the modern athlete and fashion enthusiast.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-12 md:mb-16 
-                          justify-center lg:justify-start">
+            {/* CTA Buttons - Mobile Optimized */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12 md:mb-16 
+                          justify-center lg:justify-start px-4 sm:px-0">
               <button 
                 onClick={handleExplore}
-                className="btn-primary w-full sm:w-auto"
+                className="btn-primary w-full sm:w-auto text-base sm:text-lg py-3 sm:py-4 px-6 sm:px-8 
+                         shadow-xl hover:shadow-2xl active:scale-95 transition-all"
               >
                 Explore Now
               </button>
               <button 
                 onClick={handleLearnMore}
-                className="btn-secondary group w-full sm:w-auto"
+                className="btn-secondary group w-full sm:w-auto text-base sm:text-lg py-3 sm:py-4 px-6 sm:px-8
+                         active:scale-95 transition-all"
               >
                 <span className="flex items-center justify-center gap-2">
                   Learn More
@@ -71,9 +75,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Side - Nike-Style Shoe Display */}
-          <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[700px] 
-                        flex items-center justify-center overflow-visible">
+          {/* Right Side - Nike-Style Shoe Display - Mobile Optimized */}
+          <div className="relative w-full h-[300px] xs:h-[350px] sm:h-[450px] md:h-[550px] lg:h-[700px] 
+                        flex items-center justify-center overflow-visible order-1 lg:order-2">
             <ShoeRotating />
             
             {/* Decorative Elements */}

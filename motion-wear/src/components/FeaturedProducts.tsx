@@ -54,31 +54,32 @@ const featuredProducts = [
 
 export default function FeaturedProducts() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-screen-xl mx-auto px-6 md:px-12">
-        {/* Section Header */}
-        <div className="flex items-center justify-between mb-12">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-12">
+        {/* Section Header - Mobile Optimized */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-10 md:mb-12 gap-4">
           <div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 leading-tight">
               Trending Now
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base sm:text-lg text-gray-600">
               Most loved sneakers this season
             </p>
           </div>
           <motion.a
             href="/products"
             whileHover={{ x: 5 }}
-            className="hidden md:flex items-center gap-2 text-primary-500 
-                     font-semibold hover:gap-3 transition-all"
+            whileTap={{ scale: 0.95 }}
+            className="hidden sm:flex items-center gap-2 text-primary-500 
+                     font-semibold hover:gap-3 transition-all text-base md:text-lg"
           >
             View All
             <ArrowRight size={20} />
           </motion.a>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Products Grid - Mobile Responsive */}
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
           {featuredProducts.map((product, index) => (
             <motion.div
               key={product.id}
@@ -200,12 +201,14 @@ export default function FeaturedProducts() {
         </div>
 
         {/* Mobile View All Button */}
-        <Link href="/products">
+        <Link href="/products" className="sm:hidden">
           <motion.button
             whileTap={{ scale: 0.95 }}
-            className="md:hidden mt-8 w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-bold py-4 rounded-xl text-center"
+            className="mt-6 w-full bg-gradient-to-r from-primary-500 to-secondary-500 
+                     text-white font-bold py-4 px-6 rounded-xl text-center text-base 
+                     shadow-lg active:shadow-xl transition-all"
           >
-            View All Products
+            View All Products →
           </motion.button>
         </Link>
       </div>
