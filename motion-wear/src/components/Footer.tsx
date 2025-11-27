@@ -119,10 +119,25 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          {/* Copyright */}
-          <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} Motion Wear. All rights reserved.
-          </p>
+          {/* Copyright & Credits */}
+          <div className="text-center md:text-left">
+            <p className="text-gray-400 text-sm mb-1">
+              &copy; {new Date().getFullYear()} Motion Wear. All rights reserved.
+            </p>
+            <p className="text-gray-500 text-xs flex items-center justify-center md:justify-start gap-1.5">
+              <span>Crafted with</span>
+              <span className="text-red-400 animate-pulse">❤️</span>
+              <span>by</span>
+              <a 
+                href="https://github.com/hasaansyed2020-commits" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-400 hover:text-purple-300 font-semibold transition-colors"
+              >
+                Hasaan Syed
+              </a>
+            </p>
+          </div>
 
           {/* Social Links */}
           <div className="flex space-x-4">
