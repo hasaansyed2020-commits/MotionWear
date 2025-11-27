@@ -82,13 +82,24 @@ export default function FeaturedProducts() {
           {featuredProducts.map((product, index) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+              whileHover={{ 
+                y: -8,
+                transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+              }}
               className="group bg-white rounded-2xl overflow-hidden 
-                       shadow-md hover:shadow-2xl transition-all duration-300"
+                       shadow-md hover:shadow-2xl transition-shadow duration-300"
+              style={{ 
+                willChange: 'transform',
+                transform: 'translateZ(0)',
+              }}
             >
               {/* Image Container */}
               <div className="relative aspect-square bg-gray-100 overflow-hidden">
@@ -96,7 +107,13 @@ export default function FeaturedProducts() {
                   src={product.image}
                   alt={product.name}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  priority={index < 2}
+                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  style={{
+                    willChange: 'transform',
+                    transform: 'translateZ(0)',
+                  }}
+                  quality={85}
                 />
                 
                 {/* Badge */}

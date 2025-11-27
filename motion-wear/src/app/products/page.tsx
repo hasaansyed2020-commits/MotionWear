@@ -172,12 +172,23 @@ export default function ProductsPage() {
             {products.map((product, index) => (
               <motion.div
                 key={product.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -8 }}
+                transition={{ 
+                  duration: 0.4,
+                  delay: index * 0.04,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+                whileHover={{ 
+                  y: -8,
+                  transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] }
+                }}
                 className="group bg-white rounded-2xl overflow-hidden 
-                         shadow-md hover:shadow-2xl transition-all duration-300"
+                         shadow-md hover:shadow-2xl transition-shadow duration-300"
+                style={{
+                  willChange: 'transform',
+                  transform: 'translateZ(0)',
+                }}
               >
                 <Link href={`/products/${product.id}`}>
                   {/* Image Container */}
@@ -186,7 +197,13 @@ export default function ProductsPage() {
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      priority={index < 4}
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      style={{
+                        willChange: 'transform',
+                        transform: 'translateZ(0)',
+                      }}
+                      quality={85}
                     />
                     
                     {/* Badge */}
