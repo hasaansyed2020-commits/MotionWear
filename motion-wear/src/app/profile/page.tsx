@@ -53,7 +53,7 @@ export default function ProfilePage() {
     <main className="min-h-screen bg-gray-50">
       <Navbar />
       
-      <div className="max-w-screen-xl mx-auto px-6 md:px-12 py-12">
+      <div className="max-w-screen-xl mx-auto px-6 md:px-12 pt-52 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <motion.div

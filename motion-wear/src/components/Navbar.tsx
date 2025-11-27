@@ -72,13 +72,13 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* RIGHT: Icons - BOLD & LARGER */}
-          <div className="flex items-center space-x-4">
+          {/* RIGHT: Icons & Actions - BOLD & LARGER */}
+          <div className="flex items-center space-x-3">
             <button className="hidden md:flex p-3 hover:bg-purple-100 rounded-full transition-all duration-300 hover:scale-110">
               <Search className="w-7 h-7 text-gray-800 stroke-[2.5]" />
             </button>
             
-            <Link href="/auth" className="hidden md:flex p-3 hover:bg-purple-100 rounded-full transition-all duration-300 hover:scale-110">
+            <Link href="/profile" className="hidden md:flex p-3 hover:bg-purple-100 rounded-full transition-all duration-300 hover:scale-110">
               <User className="w-7 h-7 text-gray-800 stroke-[2.5]" />
             </Link>
             
@@ -90,6 +90,20 @@ export default function Navbar() {
                 </span>
               )}
             </Link>
+
+            {/* Login/Signup Buttons */}
+            <div className="hidden md:flex items-center gap-2 ml-4">
+              <Link href="/login">
+                <button className="px-5 py-2.5 text-gray-800 font-bold hover:text-purple-600 transition-colors">
+                  Login
+                </button>
+              </Link>
+              <Link href="/signup">
+                <button className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold rounded-xl hover:shadow-lg transition-all hover:scale-105">
+                  Sign Up
+                </button>
+              </Link>
+            </div>
 
             {/* Mobile Menu Button - BOLD */}
             <button
@@ -146,6 +160,30 @@ export default function Navbar() {
                     {link.name}
                   </Link>
                 ))}
+                
+                {/* Mobile Auth Buttons */}
+                <div className="px-4 pt-4 border-t border-gray-200 space-y-3">
+                  <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)}>
+                    <button className="w-full px-4 py-3 text-gray-800 hover:bg-purple-100 hover:text-purple-600 transition-all duration-300 font-extrabold text-xl tracking-wide text-left hover:pl-6">
+                      Profile
+                    </button>
+                  </Link>
+                  <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)}>
+                    <button className="w-full px-4 py-3 text-gray-800 hover:bg-purple-100 hover:text-purple-600 transition-all duration-300 font-extrabold text-xl tracking-wide text-left hover:pl-6">
+                      Cart
+                    </button>
+                  </Link>
+                  <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                    <button className="w-full px-4 py-3 text-gray-800 hover:bg-purple-100 hover:text-purple-600 transition-all duration-300 font-bold text-lg text-center rounded-xl border-2 border-gray-300">
+                      Login
+                    </button>
+                  </Link>
+                  <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                    <button className="w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold text-lg rounded-xl hover:shadow-lg transition-all">
+                      Sign Up Free
+                    </button>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           )}

@@ -3,7 +3,10 @@ import { ImageResponse } from 'next/og';
 export const size = { width: 32, height: 32 };
 export const contentType = 'image/png';
 
-export default function Icon() {
+export default async function Icon() {
+  // Fetch the logo image
+  const logoUrl = 'https://www.genspark.ai/api/files/s/6nihDxKs?cache_control=3600';
+  
   return new ImageResponse(
     (
       <div
@@ -13,11 +16,20 @@ export default function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'white',
           borderRadius: '6px',
+          padding: '4px',
         }}
       >
-        <div style={{ fontSize: 20 }}>👟</div>
+        <img
+          src={logoUrl}
+          alt="Motion Wear"
+          width="28"
+          height="28"
+          style={{
+            objectFit: 'contain',
+          }}
+        />
       </div>
     ),
     { ...size }

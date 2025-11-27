@@ -5,13 +5,12 @@ import { motion } from 'framer-motion'
 import { Mail, Lock, User, Eye, EyeOff, Chrome } from 'lucide-react'
 import Link from 'next/link'
 
-export default function AuthPage() {
-  const [isLogin, setIsLogin] = useState(true)
+export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
-    password: ''
+    password: '',
+    rememberMe: false
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -88,41 +87,17 @@ export default function AuthPage() {
           </div>
         </motion.div>
 
-        {/* Right Side - Auth Form */}
+        {/* Right Side - Login Form */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
         >
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
-            {/* Toggle */}
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <button
-                onClick={() => setIsLogin(true)}
-                className={`text-lg font-bold transition-colors ${
-                  isLogin ? 'text-primary-600' : 'text-gray-400'
-                }`}
-              >
-                Login
-              </button>
-              <div className="w-px h-6 bg-gray-300" />
-              <button
-                onClick={() => setIsLogin(false)}
-                className={`text-lg font-bold transition-colors ${
-                  !isLogin ? 'text-primary-600' : 'text-gray-400'
-                }`}
-              >
-                Sign Up
-              </button>
-            </div>
-
             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 text-center">
-              {isLogin ? 'Welcome Back!' : 'Create Account'}
+              Welcome Back!
             </h1>
             <p className="text-gray-600 mb-8 text-center">
-              {isLogin 
-                ? 'Enter your credentials to access your account' 
-                : 'Join Motion Wear family today'
-              }
+              Enter your credentials to access your account
             </p>
 
             {/* Social Login */}
@@ -148,27 +123,6 @@ export default function AuthPage() {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name (Sign Up Only) */}
-              {!isLogin && (
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Full Name
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-                    <input
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl
-                               focus:border-primary-500 focus:outline-none transition-colors"
-                      placeholder="John Doe"
-                      required={!isLogin}
-                    />
-                  </div>
-                </div>
-              )}
-
               {/* Email */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -215,45 +169,44 @@ export default function AuthPage() {
                 </div>
               </div>
 
-              {/* Remember Me & Forgot Password (Login Only) */}
-              {isLogin && (
-                <div className="flex items-center justify-between">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" className="w-4 h-4 rounded border-gray-300 
-                                                      text-primary-500 focus:ring-primary-500" />
-                    <span className="text-sm text-gray-600">Remember me</span>
-                  </label>
-                  <Link href="/forgot-password" className="text-sm text-primary-500 font-semibold 
-                                                          hover:underline">
-                    Forgot Password?
-                  </Link>
-                </div>
-              )}
+              {/* Remember Me & Forgot Password */}
+              <div className="flex items-center justify-between">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input 
+                    type="checkbox" 
+                    checked={formData.rememberMe}
+                    onChange={(e) => setFormData({...formData, rememberMe: e.target.checked})}
+                    className="w-4 h-4 rounded border-gray-300 
+                             text-primary-500 focus:ring-primary-500" 
+                  />
+                  <span className="text-sm text-gray-600">Remember me</span>
+                </label>
+                <Link href="/forgot-password" className="text-sm text-primary-500 font-semibold 
+                                                        hover:underline">
+                  Forgot Password?
+                </Link>
+              </div>
 
               {/* Submit Button */}
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-4 rounded-xl font-bold text-lg"
+                className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all"
               >
-                {isLogin ? 'Login' : 'Create Account'}
+                Login
               </motion.button>
             </form>
 
-            {/* Terms (Sign Up Only) */}
-            {!isLogin && (
-              <p className="mt-6 text-center text-sm text-gray-600">
-                By signing up, you agree to our{' '}
-                <Link href="/terms" className="text-primary-500 font-semibold hover:underline">
-                  Terms of Service
-                </Link>
-                {' '}and{' '}
-                <Link href="/privacy" className="text-primary-500 font-semibold hover:underline">
-                  Privacy Policy
+            {/* Signup Link */}
+            <div className="mt-6 text-center">
+              <p className="text-gray-600">
+                Don&apos;t have an account?{' '}
+                <Link href="/signup" className="text-primary-500 font-semibold hover:underline">
+                  Sign up for free
                 </Link>
               </p>
-            )}
+            </div>
 
             {/* Back to Home */}
             <div className="mt-6 text-center">
