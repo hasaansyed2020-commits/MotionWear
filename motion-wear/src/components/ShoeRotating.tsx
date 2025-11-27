@@ -1,86 +1,80 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+const shoeImages = [
+  { id: 1, image: '/images/shoes/Shoe updated 2.png', name: 'Premium Collection' },
+];
+
 export default function ShoeRotating() {
+  const [currentIndex] = useState(0);
 
   return (
-    <div className="relative w-full h-[500px] md:h-[650px] lg:h-[750px] flex items-center justify-center px-4 md:px-8">
-      
-      {/* 3D Container Card - Shoe overflows from right & bottom */}
+    <div className="relative w-full h-full flex items-center justify-center"
+      style={{
+        perspective: '2500px',
+        perspectiveOrigin: 'center',
+      }}
+    >
+      {/* Nike-Style Shoe Container */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="relative w-full max-w-4xl h-[450px] md:h-[550px] overflow-visible"
-        style={{
-          perspective: '1500px',
-        }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+        className="relative w-full h-[600px] flex items-center justify-center overflow-visible"
       >
-        {/* 3D Background Container - Beige/Tan like Figma */}
-        <div 
-          className="absolute inset-0 rounded-3xl shadow-2xl"
-          style={{
-            background: 'linear-gradient(135deg, #F5E6D3 0%, #E8D4BA 100%)',
-            transform: 'rotateY(-5deg) rotateX(2deg)',
-            transformStyle: 'preserve-3d',
-            boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0,0,0,0.05)',
-          }}
-        >
-          {/* Subtle Texture Overlay */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-orange-100/10"></div>
-          
-          {/* Accent Border */}
-          <div className="absolute inset-0 rounded-3xl border border-white/40"></div>
-        </div>
 
-        {/* Shoe Image - Large Tilted Overflow like Figma */}
+        {/* Nike-Style Diagonal Floating Shoe */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: 35 }}
-          animate={{ opacity: 1, scale: 1, rotate: 45 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-          className="absolute -right-[30%] -bottom-[45%] md:-right-[35%] md:-bottom-[50%] z-10"
-          style={{
-            width: '220%',
-            height: '220%',
+          initial={{ 
+            opacity: 0,
+            y: 100,
+            scale: 0.7
           }}
+          animate={{ 
+            opacity: 1,
+            y: 0,
+            scale: 1
+          }}
+          transition={{
+            duration: 1.5,
+            ease: [0.23, 1, 0.32, 1],
+            delay: 0.2
+          }}
+          className="relative w-full h-full flex items-center justify-center"
         >
-          <img
-            src="/images/shoes/Shoe updated 2.png"
-            alt="Nike Air Max"
+          {/* Main Shoe Image with Nike-Style Transform */}
+          <motion.img
+            src={shoeImages[currentIndex].image}
+            alt={shoeImages[currentIndex].name}
             className="w-full h-full object-contain"
+            animate={{
+              y: [0, -25, 0],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
             style={{
-              filter: 'drop-shadow(0px 50px 100px rgba(0, 0, 0, 0.4))',
+              transform: 'perspective(1800px) rotateX(-12deg) rotateY(25deg) rotateZ(-30deg) scale(1.6) translateZ(80px)',
               transformStyle: 'preserve-3d',
+              transformOrigin: 'center center',
+              filter: 'drop-shadow(0px 30px 60px rgba(0, 0, 0, 0.4))',
+              maxWidth: '200%',
+              maxHeight: '200%',
             }}
           />
+          
+          {/* Dramatic Ground Shadow */}
+          <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[80%] h-[35%] -z-10">
+            <div className="absolute inset-0 bg-black/40 blur-3xl rounded-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-orange-900/30 to-purple-900/30 blur-2xl rounded-full"></div>
+          </div>
         </motion.div>
 
-
-        {/* Bottom Right Shadow */}
-        <div className="absolute -right-[5%] -bottom-[5%] w-[60%] h-32 bg-gradient-to-r from-transparent via-black/15 to-transparent blur-3xl rounded-full z-0"></div>
       </motion.div>
-
-      {/* Floating Animation Circles */}
-      <motion.div
-        animate={{ 
-          y: [0, -20, 0],
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.6, 0.3]
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-[15%] right-[10%] w-16 h-16 md:w-20 md:h-20 bg-orange-400/30 rounded-full blur-xl"
-      />
-      
-      <motion.div
-        animate={{ 
-          y: [0, 25, 0],
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.5, 0.2]
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute bottom-[20%] left-[5%] w-20 h-20 md:w-24 md:h-24 bg-purple-400/20 rounded-full blur-xl"
-      />
 
     </div>
   );

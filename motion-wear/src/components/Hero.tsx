@@ -71,9 +71,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Side - Tilted Shoe Display */}
-          <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] 
-                        flex items-center justify-center">
+          {/* Right Side - Nike-Style Shoe Display */}
+          <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[700px] 
+                        flex items-center justify-center overflow-visible">
             <ShoeRotating />
             
             {/* Decorative Elements */}
