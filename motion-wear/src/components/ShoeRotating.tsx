@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 const shoeImages = [
   { id: 1, image: '/images/shoes/Shoe updated 2.png', name: 'Premium Collection' },
@@ -58,65 +57,34 @@ export default function ShoeRotating() {
           className="relative w-full h-full flex items-center justify-center"
           style={{ willChange: 'transform, opacity' }}
         >
-          {/* Main Shoe Image with Nike-Style Transform - OPTIMIZED */}
-          <motion.div
+          {/* Main Shoe Image with Nike-Style Transform */}
+          <motion.img
+            src={shoeImages[currentIndex].image}
+            alt={shoeImages[currentIndex].name}
+            className="w-full h-full object-contain"
             animate={{
-              y: [0, -20, 0],
+              y: [0, -25, 0],
             }}
             transition={{
-              duration: 4,
+              duration: 5,
               repeat: Infinity,
-              ease: "easeInOut",
-              repeatType: "loop"
+              ease: 'easeInOut',
             }}
             style={{
-              width: '100%',
-              height: '100%',
-              position: 'relative',
+              transform: 'perspective(1800px) rotateX(-12deg) rotateY(25deg) rotateZ(-30deg) scale(1.6) translateZ(80px)',
+              transformStyle: 'preserve-3d',
+              transformOrigin: 'center center',
+              filter: 'drop-shadow(0px 30px 60px rgba(0, 0, 0, 0.4))',
+              maxWidth: '200%',
+              maxHeight: '200%',
               willChange: 'transform',
-              transform: 'translateZ(0)', // GPU acceleration
             }}
-          >
-            <div
-              style={{
-                position: 'relative',
-                width: '200%',
-                height: '200%',
-                transform: 'perspective(1800px) rotateX(-12deg) rotateY(25deg) rotateZ(-30deg) scale(0.8) translateZ(80px)',
-                transformStyle: 'preserve-3d',
-                transformOrigin: 'center center',
-                willChange: 'transform',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
-              }}
-            >
-              <Image
-                src={shoeImages[currentIndex].image}
-                alt={shoeImages[currentIndex].name}
-                fill
-                priority
-                className="object-contain"
-                style={{
-                  filter: 'drop-shadow(0px 25px 50px rgba(0, 0, 0, 0.35))',
-                  imageRendering: 'crisp-edges',
-                }}
-                quality={95}
-              />
-            </div>
-          </motion.div>
+          />
           
-          {/* Optimized Ground Shadow */}
-          <div 
-            className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[80%] h-[35%] -z-10"
-            style={{ 
-              willChange: 'auto',
-              transform: 'translateZ(0)',
-            }}
-          >
-            <div className="absolute inset-0 bg-black/35 blur-[60px] rounded-full" 
-                 style={{ transform: 'translateZ(0)' }} />
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/25 via-orange-900/25 to-purple-900/25 blur-[40px] rounded-full" 
-                 style={{ transform: 'translateZ(0)' }} />
+          {/* Dramatic Ground Shadow */}
+          <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[80%] h-[35%] -z-10">
+            <div className="absolute inset-0 bg-black/40 blur-3xl rounded-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-orange-900/30 to-purple-900/30 blur-2xl rounded-full"></div>
           </div>
         </motion.div>
 
