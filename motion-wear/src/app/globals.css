@@ -10,16 +10,35 @@
   html {
     @apply scroll-smooth;
     scroll-behavior: smooth;
+    /* GPU Acceleration for ultra smooth */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   body {
     @apply font-sans text-gray-900 antialiased;
     scroll-behavior: smooth;
+    /* Enable hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    /* Optimize rendering */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
   /* Smooth scrolling for all elements */
   * {
     scroll-behavior: smooth !important;
+    /* GPU acceleration for all elements */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Ultra smooth transitions */
+  *,
+  *::before,
+  *::after {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -47,6 +66,35 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Ultra smooth scrolling */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* GPU accelerated elements */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Buttery smooth hover */
+  .smooth-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+  
+  /* Ultra smooth scale */
+  .smooth-scale:hover {
+    transform: scale(1.05) translateZ(0);
+  }
+  
+  /* Silky smooth fade */
+  .smooth-fade {
+    transition: opacity 0.4s ease-in-out;
   }
 }
 

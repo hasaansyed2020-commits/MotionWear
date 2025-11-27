@@ -1,11 +1,16 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
 
 export const size = { width: 32, height: 32 };
 export const contentType = 'image/png';
 
 export default async function Icon() {
-  // Fetch the logo image
-  const logoUrl = 'https://www.genspark.ai/api/files/s/6nihDxKs?cache_control=3600';
+  // Read logo from local file
+  const logoPath = join(process.cwd(), 'public', 'updated_logo.png');
+  const logoBuffer = await readFile(logoPath);
+  const logoBase64 = logoBuffer.toString('base64');
+  const logoDataUrl = `data:image/png;base64,${logoBase64}`;
   
   return new ImageResponse(
     (
@@ -17,15 +22,15 @@ export default async function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           background: 'white',
-          borderRadius: '6px',
-          padding: '4px',
+          borderRadius: '4px',
+          padding: '2px',
         }}
       >
         <img
-          src={logoUrl}
-          alt="Motion Wear"
-          width="28"
-          height="28"
+          src={logoDataUrl}
+          alt="MW"
+          width="30"
+          height="30"
           style={{
             objectFit: 'contain',
           }}
