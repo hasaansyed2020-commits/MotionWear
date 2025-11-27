@@ -1,17 +1,9 @@
 import { ImageResponse } from 'next/og';
-import { readFile } from 'fs/promises';
-import { join } from 'path';
 
 export const size = { width: 180, height: 180 };
 export const contentType = 'image/png';
 
-export default async function AppleIcon() {
-  // Read logo from local file
-  const logoPath = join(process.cwd(), 'public', 'updated_logo.png');
-  const logoBuffer = await readFile(logoPath);
-  const logoBase64 = logoBuffer.toString('base64');
-  const logoDataUrl = `data:image/png;base64,${logoBase64}`;
-  
+export default function AppleIcon() {
   return new ImageResponse(
     (
       <div
@@ -19,21 +11,34 @@ export default async function AppleIcon() {
           width: '100%',
           height: '100%',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'white',
-          padding: '20px',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         }}
       >
-        <img
-          src={logoDataUrl}
-          alt="Motion Wear"
-          width="140"
-          height="140"
+        <div
           style={{
-            objectFit: 'contain',
+            fontSize: '60px',
+            fontWeight: 'bold',
+            color: 'white',
+            letterSpacing: '3px',
+            marginBottom: '8px',
           }}
-        />
+        >
+          MW
+        </div>
+        <div
+          style={{
+            fontSize: '16px',
+            fontWeight: '600',
+            color: 'white',
+            letterSpacing: '4px',
+            opacity: 0.9,
+          }}
+        >
+          MOTION WEAR
+        </div>
       </div>
     ),
     { ...size }

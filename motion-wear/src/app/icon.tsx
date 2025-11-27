@@ -1,17 +1,9 @@
 import { ImageResponse } from 'next/og';
-import { readFile } from 'fs/promises';
-import { join } from 'path';
 
 export const size = { width: 32, height: 32 };
 export const contentType = 'image/png';
 
-export default async function Icon() {
-  // Read logo from local file
-  const logoPath = join(process.cwd(), 'public', 'updated_logo.png');
-  const logoBuffer = await readFile(logoPath);
-  const logoBase64 = logoBuffer.toString('base64');
-  const logoDataUrl = `data:image/png;base64,${logoBase64}`;
-  
+export default function Icon() {
   return new ImageResponse(
     (
       <div
@@ -21,20 +13,20 @@ export default async function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'white',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           borderRadius: '4px',
-          padding: '2px',
         }}
       >
-        <img
-          src={logoDataUrl}
-          alt="MW"
-          width="30"
-          height="30"
+        <div
           style={{
-            objectFit: 'contain',
+            fontSize: '20px',
+            fontWeight: 'bold',
+            color: 'white',
+            letterSpacing: '1px',
           }}
-        />
+        >
+          MW
+        </div>
       </div>
     ),
     { ...size }
