@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
-import Logo from './Logo';
 
 export default function Footer() {
   const footerLinks = {
@@ -42,9 +41,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Brand Section with Logo */}
           <div className="lg:col-span-2">
-            <div className="mb-4">
-              <Logo variant="footer" isDark={true} />
-            </div>
+            <Link href="/" className="block mb-6 w-fit">
+              <img
+                src="/updated_logo.png"
+                alt="Motion Wear"
+                className="h-32 sm:h-36 md:h-40 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                style={{
+                  backgroundColor: 'transparent',
+                  filter: 'contrast(1.1) saturate(1.15) brightness(1.15)',
+                  mixBlendMode: 'normal',
+                  imageRendering: 'crisp-edges'
+                }}
+              />
+            </Link>
             <p className="text-gray-400 mb-6 max-w-sm">
               Where Style Meets Comfort. Premium sneakers and joggers for the modern man who values both fashion and functionality.
             </p>
